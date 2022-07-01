@@ -1,17 +1,22 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Header from './components/Header.vue'
-import SearchBar from './components/SearchBar.vue'
-import AnimeCards from './components/AnimeCards.vue'
+import { RouterLink, RouterView } from "vue-router";
+import Header from "./components/Header.vue";
+import SearchBar from "./components/SearchBar.vue";
+import AnimeCards from "./components/AnimeCards.vue";
 // import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
-  <div class="container" id="app">
+  <div class="container-xl" id="app">
     <Header />
-    <SearchBar />
-    <AnimeCards />
-    <!-- <RouterView /> -->
+    <SearchBar @upd-anime-list="updateAnimeList"/>
+    <AnimeCards :animeList="animeList"/>
+    <RouterView />
+
+    <!-- <div class="row"> -->
+    <!-- <div id="bruh" class="col-5">col-sm-8</div> -->
+    <!-- <div class="col-sm-4">col-sm-4</div> -->
+    <!-- </div> -->
   </div>
   <!-- <header> -->
   <!--   <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
@@ -25,10 +30,31 @@ import AnimeCards from './components/AnimeCards.vue'
   <!--     </nav> -->
   <!--   </div> -->
   <!-- </header> -->
-
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      animeList: [],
+    };
+  },
+  methods : {
+    updateAnimeList(newList) {
+      this.animeList = newList
+    }
+  }
+};
+</script>
+
 <style>
+#app {
+  margin-top: 60px;
+}
+#bruh {
+  border: 1px solid blue;
+}
+
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap"); */
 /* * { */
 /*   padding: 0; */
@@ -42,7 +68,4 @@ import AnimeCards from './components/AnimeCards.vue'
 /*   min-height: 100vh; */
 /*   background-color: rgb(234, 242, 255); */
 /* } */
-
-
-
 </style>

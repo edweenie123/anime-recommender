@@ -1,4 +1,6 @@
 <template>
+  <div class="d-flex justify-content-center">
+
   <div class="input-group">
     <input
       @keyup.enter="onEnter"
@@ -9,6 +11,8 @@
     <button @click="onEnter" type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
     </button>
+  </div>
+
   </div>
 </template>
 <script>
@@ -25,12 +29,21 @@ export default {
       const res = await fetch(path)
       const bruh = await res.json()
       console.log(bruh)
+
+      this.$emit('upd-anime-list', bruh)
     },
   },
 };
 </script>
 
+
 <style scoped>
+
+.input-group {
+  margin-top: 10rem;
+  width: 30rem;
+}
+
 /* input { */
 /*   display: block; */
 /*   width: 350px; */
