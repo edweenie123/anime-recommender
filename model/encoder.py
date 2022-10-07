@@ -26,3 +26,16 @@ class Encoder(nn.Module):
         masked_mse = torch.sum(masked_se) / torch.maximum(torch.sum(mask), torch.tensor(1))
 
         return masked_mse
+    
+    def make_recommendations(self, anime_tensor, k):
+        '''Return the top <k> anime with the highest predicted rating'''
+        inp = anime_tensor
+        pred = self(inp)
+
+        pred[inp != 0] = 0
+
+        values, indices = torch.sort(pred, descending=True)
+        values = values.tolist()
+        indices = indices.tolist()
+
+        return values[:k], indices[:k]
