@@ -22,7 +22,7 @@
       <img :src="imgSrc" />
       <div class="info">
         <h6>{{ title }}</h6>
-        <p class="text-primary">Predicted Score: {{ predScore }}</p>
+        <p class="text-primary">Predicted Score: <span class="score">{{ predScore }}</span></p>
       </div>
 
       <div class="mask">
@@ -56,12 +56,12 @@ export default {
 }
 
 img {
-  width: 10rem;
+  width: 100%;
 }
 .anime-card {
   border-radius: 5px;
   display: inline-block;
-  width: 10rem;
+  width: 14rem;
   margin: 1rem;
   position: relative;
 }
@@ -70,7 +70,7 @@ img {
   padding: 0.5rem;
   color: white;
   height: 5rem;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   bottom: 0px;
   /* z-index: 2; */
@@ -78,13 +78,18 @@ img {
 }
 
 h6 {
-  font-size: 13px;
+  font-size: 17px;
 }
 
+
 p {
-  font-size: 11px;
-  color: blue;
+  font-size: 17px;
+  color: rgba(244, 170, 255);
   font-weight: bold;
+}
+
+.score {
+
 }
 
 .link {
